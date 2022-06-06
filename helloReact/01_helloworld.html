@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <!-- react核心库 -->
+  <script src="./script/react.development.js"></script>
+  <!-- react dom库 -->
+  <script src="./script/react-dom.development.js"></script>
+
+  <script>
+    // react就是用来代替dom的
+
+    //原生dom
+    const divDom = document.createElement("div");//创建dom元素
+    divDom.innerText = '你好,我是dom创建的div'
+    document.querySelector('#root').appendChild(divDom)
+    console.log(divDom);
+
+    //react
+    //参数1:组件/元素名称
+    //参数2:元素中的属性
+    //参数3:元素中的子元素
+    const divReact = React.createElement('div', {}, '我是react创建的div')//创建react元素
+    console.log(divReact);
+
+    //获取dom元素root对应的react元素
+
+    //ReactDom.createRoot 参数需要一个dom
+    const root = ReactDOM.createRoot(document.querySelector('#root'))
+    //把react创建的div放到react对应的root里面
+    //render渲染
+    root.render(divReact)
+
+
+  </script>
+
+</body>
+
+</html>
