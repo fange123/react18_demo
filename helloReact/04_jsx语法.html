@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script src="./script/react.development.js"></script>
+  <script src="./script/react-dom.development.js"></script>
+  <!-- 引入babel，把jsx翻译成js -->
+  <script src="./script//babel.min.js"></script>
+
+  <script>
+
+    //使用react地api并么有使得编程更加优雅简单：
+    //命令式编程（过程式导向）
+    const button = React.createElement('button', {}, '按钮')
+
+    //声明式编程（结果导向）
+    const btn = <button>按钮</button>
+    //但是这种jsx语法react不认识，所以需要babel进行翻译，需要被翻译成js语法（React.createElement('button', {}, '按钮')），react才能识别
+  </script>
+
+  <!-- 设置js代码被babel转译，只是引入babel不够 -->
+  <script type="text/babel">
+
+    // TODO:jsx其实就是React.createElement的语法糖
+    const btn1 = <button>按钮</button>
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(btn1)
+
+
+  </script>
+
+</body>
+
+</html>
