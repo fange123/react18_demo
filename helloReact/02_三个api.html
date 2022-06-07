@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script src="./script/react.development.js"></script>
+  <script src="./script/react-dom.development.js"></script>
+
+  <script>
+
+    // 第一个api
+    // React.createElement
+    // 用来创建react元素的
+    //1.参数1,创建的标签，必须小写，不然会被识别为组件
+    //2.参数2，标签的属性
+    // 设置事件属性的时候，必须采用驼峰命名
+    // class必须用className
+    //3.参数3-n，字元素，可多个
+    const button = React.createElement('button', {
+      id: 'btn', type: 'button', onClick: () => {
+        const div = React.createElement('div', {}, '我是新div', button)
+        root.render(div)
+      }, className: 'btn'
+    }, '点我一下')
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    const div = React.createElement('div', {}, '我是div', button)
+    root.render(div)
+
+
+    //结论
+    //1，react元素最终会通过虚拟dom转化为真实的dom
+    //1，react元素一旦创建就无法修改，只能通过新创建的元素去替换掉
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="./script/react.development.js"></script>
+  <script src="./script/react-dom.development.js"></script>
+
+  <script>
+    //创建一个react button
+    const button = React.createElement('button', { onClick: () => alert('点我干嘛'), className: 'btn' }, '点我一下');
+
+    //创建一个react div
+    const div = React.createElement('div', {}, '我是div', button)
+
+
+    // ReactDOM.render(div, document.getElementById('root'));//TODO:老版本渲染方法，react18不支持
+
+    //获取到对应的react 根元素 ，根元素相当于一个容器，就是react元素要插入的位置
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+
+    //把react元素渲染到根元素里
+    //根元素的内容都会背删除，被react元素所替换
+    //重复调用root.render()的时候，react会将两次渲染结果进行比较，
+    //它会确保只修改那些已发生变化的元素，对dom做最小的修改
+    root.render(div)
+
+
+  </script>
+
+</body>
+
+</html>
