@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script src="./script/react.development.js"></script>
+  <script src="./script/react-dom.development.js"></script>
+  <!-- 引入babel，把jsx翻译成js -->
+  <script src="./script//babel.min.js"></script>
+
+
+  <script type="text/babel">
+
+    //!: jsx不是字符串，不要加引号
+    //!: jsx中html标签小写，react组件大写开头
+    //!: jsx中可以使用{}来嵌入表达式   表达式---有值的内容 ,
+    //!:{ } 里面的值如果是null, undefined, false等不会显示，被忽略
+    const name = '张海玉'
+    const fn = () => 'hell0'
+    const btn1 = <button>按钮{name}---{1 + 1}----{fn()}---{undefined}</button>
+
+    //!: jsx有且只有一个根标签
+    //!: jsx的标签必须正确结束（自结束标签必须写/）<input />
+    //!: jsx中标签可以直接设置属性  class必须使用className ，style必须是{}
+    //style={{}}  外面的{}表示的是表达式，里面的{}表示的是对象
+    const div = <div onClick={() => alert('123')} style={{ width: '100px', backgroundColor: 'yellow' }}> 盒子</div >
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(btn1)
+
+
+  </script>
+
+</body>
+
+</html>
