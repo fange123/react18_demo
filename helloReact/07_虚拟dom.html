@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>虚拟dom</title>
+</head>
+
+<body>
+  <button id="button">点击</button>
+
+  <div id="root"></div>
+
+  <script src="./script/react.development.js"></script>
+  <script src="./script/react-dom.development.js"></script>
+  <script src="./script/babel.min.js"></script>
+
+  <script type="text/babel">
+    //虚拟dom好处
+    // !:原生dom api多且复杂，操作起来不方便
+    // !:虚拟dom不需要考虑兼容性
+    // !:操作虚拟dom比原生dom性能高，提升性能（减少dom的不必要操作）
+
+    //每次调用root.render就代表重新渲染
+    //react就会通过diff算法，对比新旧dom
+    //通过比较找到发生变化的元素，只修改变化的元素，没有发生变化的不予处理
+
+    const arr = ['喜洋洋', '美羊羊', '懒洋洋']
+
+    const list = arr.map(item => <li key={item}>{item}</li>)
+
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+
+
+    document.getElementById("button").addEventListener('click', () => {
+      const arr = ['喜洋洋', '美羊羊', '懒洋洋', '沸羊羊']
+      //TODO:在jsx中显示数组时，数组中的每一个元素都需要设置一个key
+      //重新渲染页面时，react会根据顺序依次比较对应的元素，但当渲染一个列表的时候，也是按照顺序比较
+      //如果列表的顺序永远不会发生变化，比较就没问题
+      //如果列表的顺序会发生变化（增加，减少），就会影响性能，react默认根据位置比较
+      //有了key之后，就按照key来进行对比，就不会因为顺序改变而替换全部
+      //!:key在当前列表中唯一即可（id最好，尽量不要用索引，索引会变，虽然浏览器控制台没有警告了，但是没有意义）
+      //!:当元素顺序不会发生变化，那也可以用索引作为key
+      const list = arr.map(item => <li key={item}>{item}</li>)
+      //两次数据一模一样，不会修改真实的dom
+      root.render(list)//render的时候开始diff算法进行对比
+      //在进行比较的时候，先比较父元素，如果父元素不同，直接所有元素全部替换
+      //父元素一致，再逐个对比子元素，一致不修改，不一样直接替换成新的
+
+    })
+    root.render(list)
+
+  </script>
+
+</body>
+
+</html>
