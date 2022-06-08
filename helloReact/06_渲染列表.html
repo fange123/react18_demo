@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>列表渲染</title>
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script src="./script/react.development.js"></script>
+  <script src="./script/react-dom.development.js"></script>
+  <script src="./script/babel.min.js"></script>
+
+  <script type='text/babel'>
+    //{}里面只能放表达式，不能放语句
+
+    const arr = ['喜洋洋', '美羊羊', '懒洋洋']
+    //!: 在表达式里面直接写数组，jsx会自动遍历，把数组里的内容全部展示出来
+    const div = <div>{arr}</div>//喜洋洋美羊羊懒洋洋
+
+    //!:如果需要一条一条的遍历，需要把数组变成这样：[<li>喜洋洋</li>, <li>美羊羊</li>, <li>懒洋洋</li>]
+    //这个方法是for循环外部进行操作的，生成新数组
+    const arr1 = []
+    for (let index = 0; index < arr.length; index++) {
+      arr1.push(<li key={index}>{arr[index]}</li>)
+
+    }
+    const div1 = <div>{arr1}</div>
+
+    //!:使用map方法生成新数组
+    const arr2 = arr.map((item, index) => <li key={index}>{item}</li>)
+    const div2 = <div>{arr2}</div>
+
+    const root = ReactDOM.createRoot(document.querySelector('#root'));
+    root.render(div2)
+
+  </script>
+
+</body>
+
+</html>
