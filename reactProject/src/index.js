@@ -4,7 +4,7 @@
 //# 安装依赖 yarn add react react-dom react-scripts  (react核心库，react dom操作库，为react提供开发环境的库，包括webpack，测试库等)
 //# 运行npx react-scripts start启动项目（初次启动需要输入y确认）
 //# 或者将react-scripts start设置到package.json的scripts选项中，然后通过npm start启动（初次启动需要输入y确认）”scripts”: { “start”: “react-scripts start” }
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client"; //react18开始把react dom拆分成client和service
 
 const App = (
   <div>
