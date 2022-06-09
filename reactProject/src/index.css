@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+}
+.content {
+  width: 800px;
+  margin: 50px auto;
+  background-color: bisque;
+  padding: 10px;
+  height: 300px;
+  display: flex;
+}
+.first {
+  background-color: aqua;
+}
+.second {
+  /* flex: 1; */
+  flex: auto;
+  background-color: violet;
+}
