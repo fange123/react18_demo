@@ -1,4 +1,5 @@
 //*  src/index.js是js的入口文件
+import DropBack from "./portal/index";
 
 //# 初始化一个项目(创建package.json文件)： yarn init -y   npm init -y
 //# 安装依赖 yarn add react react-dom react-scripts  (react核心库，react dom操作库，为react提供开发环境的库，包括webpack，测试库等)
@@ -9,12 +10,10 @@ import "./index.css";
 
 const App = () => {
   return (
-    <div>
-      <h1>我是react项目</h1>
-      <div className='content'>
-        <div className='first'>啊啊啊</div>
-        <div className='second'>哈哈哈哈</div>
-      </div>
+    <div className='content'>
+      <div className='first'>啊啊啊</div>
+      <div className='second'>哈哈哈哈</div>
+      <DropBack />
     </div>
   );
 };

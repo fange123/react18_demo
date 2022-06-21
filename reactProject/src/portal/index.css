@@ -1,0 +1,20 @@
+.wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+.wrap .content {
+  width: 300px;
+  height: 200px;
+  background-color: antiquewhite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* ?元素居中，在这个方法中，必须写margin:auto */
+  margin: auto;
+}
