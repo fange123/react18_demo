@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Meals from "./components/Meals/Meals";
+import A from "./testDemo/A";
+import B from "./testDemo/B";
+import Context from "./store/testContext";
 
 const App = () => {
   // 模拟一组食物数据
@@ -54,12 +57,25 @@ const App = () => {
       img: "/img/meals/7.png",
     },
   ];
-
   const [mealData, setMealData] = useState(MEALS_DATA);
+
+  //* 存储购物车的数据：
+  //? 1.商品[]
+  //? 总数量.totalAmount
+  //? 总价格.totalPrice
+
+  const [cartData, setCartData] = useState({
+    items: [],
+    totalAmount: 0,
+    totalPrice: 0,
+  });
+
   return (
-    <>
+    <Context.Provider value={{ name: "周三" }}>
+      <A />
+      <B />
       <Meals mealData={mealData} />
-    </>
+    </Context.Provider>
   );
 };
 
