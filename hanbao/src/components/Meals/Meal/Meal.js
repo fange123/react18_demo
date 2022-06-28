@@ -3,7 +3,8 @@ import Counter from "../../UI/Counter/Counter";
 import styles from "./meal.module.css";
 
 const Meal = (props) => {
-  const { img, title, desc, price, amount } = props;
+  const { mealData } = props;
+  const { img, title, desc, price } = mealData;
   return (
     <div className={styles.meal}>
       <div className={styles.img_wrap}>
@@ -14,7 +15,7 @@ const Meal = (props) => {
         <p className={styles.desc}>{desc}</p>
         <div className={styles.price_wrap}>
           <span className={styles.price}>{price}</span>
-          <Counter amount={amount} />
+          <Counter mealData={mealData} />
         </div>
       </div>
     </div>

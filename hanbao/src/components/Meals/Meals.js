@@ -7,7 +7,7 @@ const Meals = (props) => {
   return (
     <div className={styles.meals}>
       {mealData.map((item) => (
-        <Meal key={item.id} {...item} />
+        <Meal key={item.id} mealData={item} />
       ))}
     </div>
   );
