@@ -2,17 +2,13 @@ import React from "react";
 import Meal from "./Meal/Meal";
 import styles from "./meals.module.css";
 
-const Meals = () => {
+const Meals = (props) => {
+  const { mealData } = props;
   return (
     <div className={styles.meals}>
-      <Meal />
-      <Meal />
-      <Meal />
-      <Meal />
-      <Meal />
-      <Meal />
-      <Meal />
-      <Meal />
+      {mealData.map((item) => (
+        <Meal key={item.id} {...item} />
+      ))}
     </div>
   );
 };
