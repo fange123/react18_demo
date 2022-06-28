@@ -31,6 +31,7 @@
   margin-top: 40rem;
   display: flex;
   justify-content: space-between;
+  padding-right: 20rem;
 }
 .price {
   font-weight: bolder;
@@ -41,8 +42,4 @@
   font-weight: normal;
   font-size: 12px;
   margin-right: 10rem;
-}
-
-.price_wrap .number {
-  font-size: 12px;
 }
