@@ -1,7 +1,12 @@
 import React from "react";
+import Meals from "./components/Meals/Meals";
 
 const App = () => {
-  return <div>app</div>;
+  return (
+    <>
+      <Meals />
+    </>
+  );
 };
 
 export default App;

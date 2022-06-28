@@ -1,0 +1,48 @@
+.meal {
+  border-bottom: 1px solid #f2f2f2;
+  display: flex;
+  padding: 30rem 20rem;
+  align-items: center;
+}
+.img_wrap {
+  width: 280rem;
+}
+.img_wrap img {
+  width: 100%;
+}
+.wrap {
+  margin-left: 20rem;
+}
+
+.wrap .title {
+  font-weight: normal;
+  font-size: 18px;
+  color: #666;
+  margin: 0;
+}
+
+.wrap .desc {
+  padding-right: 30rem;
+  color: #999;
+  font-size: 12px;
+  margin: 0;
+}
+.price_wrap {
+  margin-top: 40rem;
+  display: flex;
+  justify-content: space-between;
+}
+.price {
+  font-weight: bolder;
+  font-size: 14px;
+}
+.price::before {
+  content: "¥";
+  font-weight: normal;
+  font-size: 12px;
+  margin-right: 10rem;
+}
+
+.price_wrap .number {
+  font-size: 12px;
+}
