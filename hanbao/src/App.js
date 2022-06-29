@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FilterMeals from "./components/FilterMeals/FilterMeals";
 import Meals from "./components/Meals/Meals";
 import Cart from "./components/UI/Cart/Cart";
+import DropBack from "./components/UI/DropBack/DropBack";
 import CartContext from "./store/cartContext";
 
 const App = () => {
@@ -128,6 +129,7 @@ const App = () => {
       <FilterMeals filterMeals={filterMeals} />
       <Meals mealData={mealData} />
       <Cart />
+      <DropBack />
     </CartContext.Provider>
   );
 };
