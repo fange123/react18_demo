@@ -16,7 +16,7 @@
 
 .wrap .title {
   font-weight: normal;
-  font-size: 18px;
+  font-size: 36rem;
   color: #666;
   margin: 0;
 }
@@ -24,7 +24,7 @@
 .wrap .desc {
   padding-right: 30rem;
   color: #999;
-  font-size: 12px;
+  font-size: 24rem;
   margin: 0;
 }
 .price_wrap {
@@ -35,11 +35,11 @@
 }
 .price {
   font-weight: bolder;
-  font-size: 14px;
+  font-size: 28rem;
 }
 .price::before {
   content: "¥";
   font-weight: normal;
-  font-size: 12px;
+  font-size: 24rem;
   margin-right: 10rem;
 }

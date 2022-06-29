@@ -7,7 +7,7 @@
   border: none;
   border-radius: 50%;
   background-color: rgb(242, 187, 21);
-  font-size: 12px;
+  font-size: 24rem;
   width: 36rem;
   height: 36rem;
   display: flex;
@@ -16,6 +16,6 @@
 }
 .count {
   margin: 0 12rem;
-  font-size: 12px;
+  font-size: 24rem;
   color: #999;
 }

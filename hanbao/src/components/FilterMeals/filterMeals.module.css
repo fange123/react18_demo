@@ -22,11 +22,12 @@
   background-color: #eee;
   padding-left: 60rem;
   outline: none;
+  font-size: 30rem;
 }
 
 .wrap .font_icon {
   color: #999;
-  font-size: 16px;
+  font-size: 32rem;
   position: absolute;
   left: 10rem;
 }
