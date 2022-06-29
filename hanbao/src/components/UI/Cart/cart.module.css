@@ -38,12 +38,17 @@
   font-size: 14rem;
 }
 
-.price {
+.price,
+.no_meal {
   font-size: 38rem;
   color: #fff;
   margin-left: 120rem;
   font-weight: bold;
 }
+.no_meal {
+  color: #aaa;
+}
+
 .price::before {
   content: "¥";
   font-size: 30rem;
@@ -58,4 +63,8 @@
   outline: none;
   height: 100%;
   font-size: 36rem;
+}
+.btn_disabled {
+  background-color: rgb(135, 133, 133);
+  color: rgb(206, 203, 203);
 }

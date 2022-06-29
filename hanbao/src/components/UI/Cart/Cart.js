@@ -10,10 +10,22 @@ const Cart = () => {
     <div className={styles.wrap}>
       <div className={styles.bag}>
         <img src={bagPng} alt='购物车' />
-        <span className={styles.count}>{totalAmount}</span>
+        {totalAmount === 0 ? null : (
+          <span className={styles.count}>{totalAmount}</span>
+        )}
       </div>
-      <div className={styles.price}>{totalPrice}</div>
-      <button className={styles.button}>去结算</button>
+      {totalAmount === 0 ? (
+        <p className={styles.no_meal}>未选购商品</p>
+      ) : (
+        <div className={styles.price}>{totalPrice}</div>
+      )}
+      <button
+        className={`${styles.button} ${
+          totalAmount === 0 ? styles.btn_disabled : ""
+        }`}
+      >
+        去结算
+      </button>
     </div>
   );
 };
