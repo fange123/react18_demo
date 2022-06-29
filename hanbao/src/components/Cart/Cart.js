@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styles from "./cart.module.css";
-import bagPng from "../../../asset/bag.png";
-import CartContext from "../../../store/cartContext";
+import bagPng from "../../asset/bag.png";
+import CartContext from "../../store/cartContext";
 
 const Cart = () => {
   const ctx = useContext(CartContext);

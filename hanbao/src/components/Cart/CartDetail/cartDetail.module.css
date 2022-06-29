@@ -1,0 +1,33 @@
+.wrap {
+  background-color: #fff;
+  padding-bottom: 120rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.header {
+  padding: 30rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  font-size: 30rem;
+  margin: 0;
+}
+.clear {
+  font-size: 24rem;
+  color: #999;
+  cursor: pointer;
+}
+
+.clear span {
+  margin-left: 14rem;
+}
+.meal_list {
+  max-height: 1000rem;
+  overflow: auto;
+}
