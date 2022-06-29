@@ -3,7 +3,6 @@ import FilterMeals from "./components/FilterMeals/FilterMeals";
 import Meals from "./components/Meals/Meals";
 import Cart from "./components/Cart/Cart";
 import CartContext from "./store/cartContext";
-import CartDetail from "./components/Cart/CartDetail/CartDetail";
 
 const App = () => {
   // 模拟一组食物数据
@@ -129,7 +128,6 @@ const App = () => {
       <FilterMeals filterMeals={filterMeals} />
       <Meals mealData={mealData} />
       <Cart />
-      <CartDetail />
     </CartContext.Provider>
   );
 };

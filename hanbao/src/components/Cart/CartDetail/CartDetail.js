@@ -11,7 +11,8 @@ const CartDetail = () => {
   const { items } = ctx;
   return (
     <DropBack>
-      <div className={styles.wrap}>
+      {/*stopPropagation 防止 遮罩层关闭事件的冒泡 */}
+      <div className={styles.wrap} onClick={(e) => e.stopPropagation()}>
         <header className={styles.header}>
           <h2 className={styles.title}>餐品详情</h2>
           <div className={styles.clear}>
