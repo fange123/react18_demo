@@ -116,9 +116,15 @@ const App = () => {
     setCartData(newCartData);
   };
 
+  //搜索过滤功能
+  const filterMeals = (keyword) => {
+    const newData = MEALS_DATA.filter((item) => item.title.includes(keyword));
+    setMealData(newData);
+  };
+
   return (
     <CartContext.Provider value={{ ...cartData, addItem, removeItem }}>
-      <FilterMeals />
+      <FilterMeals filterMeals={filterMeals} />
       <Meals mealData={mealData} />
     </CartContext.Provider>
   );
