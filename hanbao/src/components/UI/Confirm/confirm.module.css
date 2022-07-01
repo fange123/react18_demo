@@ -1,0 +1,41 @@
+.drop {
+  z-index: 9999;
+}
+.wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 640rem;
+  height: 350rem;
+  background-color: #fff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.title {
+  font-size: 36rem;
+  color: #666;
+  margin: 0;
+}
+
+.cancel,
+.ok {
+  width: 180rem;
+  height: 60rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  outline: none;
+  border-radius: 15px;
+}
+
+.ok {
+  border: none;
+  background-color: rgb(242, 187, 21);
+  margin-left: 30rem;
+}

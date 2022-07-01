@@ -103,10 +103,7 @@ const App = () => {
     if (newCartData.items.find((item) => item.id === meal.id)) {
       //如果存在商品
       meal.amount -= 1;
-      newCartData.items.splice(
-        1,
-        newCartData.items.findIndex((item) => item.id === meal.id)
-      );
+      newCartData.items.forEach((item) => delete item.id === meal.id);
     } else {
       //如果不存在商品
       meal.amount = 0;
@@ -123,8 +120,21 @@ const App = () => {
     setMealData(newData);
   };
 
+  //清空购物车
+  const clearCart = () => {
+    const newData = { ...cartData };
+    cartData.items.forEach((item) => delete item.amount);
+    newData.totalAmount = 0;
+    newData.totalPrice = 0;
+    newData.items = [];
+
+    setCartData(newData);
+  };
+
   return (
-    <CartContext.Provider value={{ ...cartData, addItem, removeItem }}>
+    <CartContext.Provider
+      value={{ ...cartData, addItem, removeItem, clearCart }}
+    >
       <FilterMeals filterMeals={filterMeals} />
       <Meals mealData={mealData} />
       <Cart />
