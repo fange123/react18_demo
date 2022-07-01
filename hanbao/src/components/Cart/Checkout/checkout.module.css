@@ -1,0 +1,70 @@
+.wrap {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 20rem;
+  background-color: #eee;
+  z-index: 9999;
+}
+
+.close {
+  padding: 20rem;
+}
+
+.icon {
+  font-size: 38rem;
+  color: #333;
+}
+
+.description {
+  background-color: #fff;
+  padding: 20rem;
+  border-radius: 15px;
+}
+
+.title {
+  height: 60rem;
+  font-size: 26rem;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
+
+.list {
+}
+.footer {
+  height: 120rem;
+  border-top: 1px dashed #ccc;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+.footer::after,
+.footer::before {
+  position: absolute;
+  top: -10rem;
+  left: -30rem;
+  content: "";
+  width: 20rem;
+  height: 20rem;
+  background-color: #eee;
+  border-radius: 50%;
+}
+.footer::after {
+  /*! auto可以取消定位 */
+  left: auto;
+  right: -30rem;
+}
+
+.price {
+  font-size: 34rem;
+  font-weight: bold;
+}
+.price::before {
+  content: "合计¥";
+  font-size: 16rem;
+  font-weight: normal;
+  margin-right: 5rem;
+}
