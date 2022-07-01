@@ -7,7 +7,8 @@ import CartContext from "../../../store/cartContext";
 import Meal from "../../Meals/Meal/Meal";
 import Confirm from "../../UI/Confirm/Confirm";
 
-const CartDetail = () => {
+const CartDetail = (props) => {
+  const { setShowDetail } = props;
   const ctx = useContext(CartContext);
   const { items, clearCart } = ctx;
   const [showConfirm, setShowConfirm] = useState(false);
@@ -18,6 +19,7 @@ const CartDetail = () => {
   const handelOk = () => {
     clearCart();
     setShowConfirm(false);
+    setShowDetail(false);
   };
   return (
     <DropBack>
@@ -39,10 +41,7 @@ const CartDetail = () => {
         {showConfirm && (
           <Confirm
             text='确定清空购物车吗'
-            onOk={(e) => {
-              e.stopPropagation();
-              handelOk();
-            }}
+            onOk={handelOk}
             onCancel={(e) => {
               e.stopPropagation();
               handelCancel();

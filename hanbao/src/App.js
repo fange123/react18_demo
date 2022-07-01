@@ -99,14 +99,18 @@ const App = () => {
   //减少商品
   const removeItem = (meal) => {
     const newCartData = { ...cartData };
-
-    if (newCartData.items.find((item) => item.id === meal.id)) {
+    if (meal.amount === 1) {
       //如果存在商品
-      meal.amount -= 1;
-      newCartData.items.forEach((item) => delete item.id === meal.id);
+      //要从购物车删除这条
+      newCartData.items.forEach((item, index) => {
+        if (item.id === meal.id) {
+          newCartData.items.splice(index, 1);
+        }
+      });
+      meal.amount = 0;
     } else {
       //如果不存在商品
-      meal.amount = 0;
+      meal.amount -= 1;
     }
     newCartData.totalAmount -= 1;
     newCartData.totalPrice -= meal.price;
