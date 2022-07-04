@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import CartContext from "../../../store/cartContext";
 import CheckoutItem from "./CheckoutItem/CheckoutItem";
+import Bar from "./Bar/Bar";
 
 const Checkout = (props) => {
   const { onHide } = props;
@@ -32,6 +33,7 @@ const Checkout = (props) => {
           <span className={styles.price}>{totalPrice}</span>
         </footer>
       </div>
+      <Bar />
     </div>,
     checkout
   );
