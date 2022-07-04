@@ -1,0 +1,38 @@
+.wrap {
+  display: flex;
+}
+
+.img_wrap {
+  width: 200rem;
+  margin-right: 20rem;
+}
+.img_wrap img {
+  width: 100%;
+}
+
+.desc {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.title {
+  font-size: 30rem;
+  margin: 0;
+}
+
+.price_wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 30rem;
+}
+.price::before {
+  content: "¥";
+  font-size: 24rem;
+  font-weight: normal;
+}

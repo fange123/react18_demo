@@ -32,6 +32,8 @@
 }
 
 .list {
+  max-height: 800rem;
+  overflow: auto;
 }
 .footer {
   height: 120rem;
