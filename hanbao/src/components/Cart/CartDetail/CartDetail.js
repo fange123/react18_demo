@@ -9,14 +9,14 @@ import Confirm from "../../UI/Confirm/Confirm";
 
 const CartDetail = () => {
   const ctx = useContext(CartContext);
-  const { items, clearCart } = ctx;
+  const { items, dispatch } = ctx;
   const [showConfirm, setShowConfirm] = useState(false);
 
   const handelCancel = () => {
     setShowConfirm(false);
   };
   const handelOk = () => {
-    clearCart();
+    dispatch({ type: "clearCart" });
     setShowConfirm(false);
   };
   return (

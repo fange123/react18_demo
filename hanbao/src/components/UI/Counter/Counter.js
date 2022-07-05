@@ -15,19 +15,29 @@ import CartContext from "../../../store/cartContext";
 
 const Counter = (props) => {
   const ctx = useContext(CartContext);
-  const { addItem, removeItem } = ctx;
+  const { dispatch } = ctx;
   const { mealData } = props;
   return (
     <div className={styles.wrap}>
       {mealData.amount ? (
         <>
-          <button className={styles.sub} onClick={() => removeItem(mealData)}>
+          <button
+            className={styles.sub}
+            onClick={() =>
+              dispatch({ type: "removeItem", payload: { meal: mealData } })
+            }
+          >
             <FontAwesomeIcon icon={faMinus} />
           </button>
           <span className={styles.count}>{mealData.amount}</span>
         </>
       ) : null}
-      <button className={styles.add} onClick={() => addItem(mealData)}>
+      <button
+        className={styles.add}
+        onClick={() => {
+          dispatch({ type: "addItem", payload: { meal: mealData } });
+        }}
+      >
         <FontAwesomeIcon icon={faPlus} />
       </button>
     </div>
