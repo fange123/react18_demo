@@ -7,8 +7,7 @@ import CartContext from "../../../store/cartContext";
 import Meal from "../../Meals/Meal/Meal";
 import Confirm from "../../UI/Confirm/Confirm";
 
-const CartDetail = (props) => {
-  const { setShowDetail } = props;
+const CartDetail = () => {
   const ctx = useContext(CartContext);
   const { items, clearCart } = ctx;
   const [showConfirm, setShowConfirm] = useState(false);
@@ -19,7 +18,6 @@ const CartDetail = (props) => {
   const handelOk = () => {
     clearCart();
     setShowConfirm(false);
-    setShowDetail(false);
   };
   return (
     <DropBack>
