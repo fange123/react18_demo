@@ -1,0 +1,7 @@
+.wrap {
+  width: 200px;
+  display: flex;
+}
+.wrap h2 {
+  margin: 0 20px;
+}
