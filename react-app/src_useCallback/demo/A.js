@@ -21,12 +21,13 @@ const A = () => {
   // *如果不指定依赖数组，回调函数会每次都重新创建，就失去useCallback的意义了
   // *依赖项是一个空数组的时候，就只是在初始化的时候创建一次
   // *一定要将回调函数中用到的变量都放到依赖数组里面，除了（setSate）
+  // *useCallback一般要和react.memo配合使用，不然也没效果
 
   //~但是在这个例子中，使用useCallback和不用效果是一样的，useCallback并没有起到啥效果
 
   const addCount1 = useCallback(() => {
-    setCount(count + 1);
-  }, [count]);
+    setCount((prev) => prev + 1);
+  }, []);
 
   return (
     <div>

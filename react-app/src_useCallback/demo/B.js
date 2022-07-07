@@ -12,4 +12,4 @@ const B = (props) => {
   );
 };
 
-export default B;
+export default React.memo(B);
