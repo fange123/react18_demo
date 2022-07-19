@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "staff_info_managers",
+  "info": {
+    "singularName": "staff-info-manager",
+    "pluralName": "staff-info-managers",
+    "displayName": "staffInfoManager"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "account": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "biginteger"
+    },
+    "status": {
+      "type": "integer"
+    },
+    "organizationCode": {
+      "type": "string"
+    },
+    "organizationName": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "createPerson": {
+      "type": "string"
+    },
+    "createTime": {
+      "type": "datetime"
+    }
+  }
+}
