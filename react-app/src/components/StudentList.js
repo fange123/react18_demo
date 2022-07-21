@@ -1,6 +1,7 @@
 import React from "react";
 import Student from "./Student";
 import styles from "./index.module.css";
+import StudentForm from "./StudentForm";
 
 const StudentList = (props) => {
   const { list } = props;
@@ -20,6 +21,9 @@ const StudentList = (props) => {
           <Student key={item.id} {...item} />
         ))}
       </tbody>
+      <tfoot>
+        <StudentForm />
+      </tfoot>
     </table>
   );
 };
