@@ -38,7 +38,9 @@ const App = () => {
   return (
     <StudentContent.Provider value={{ fetchList }}>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <button onClick={refresh}>刷新</button>
+        <button onClick={refresh} style={{ width: "50px", height: "30px" }}>
+          刷新
+        </button>
         {!loading && !error && <StudentList list={list} />}
         {loading && <p>数据正在加载中...</p>}
         {error && <p>数据加载异常！！！</p>}

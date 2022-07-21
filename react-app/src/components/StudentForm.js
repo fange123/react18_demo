@@ -2,12 +2,12 @@ import React, { useState, useCallback, useContext } from "react";
 import styles from "./index.module.css";
 import StudentContent from "./store";
 
-const StudentForm = () => {
+const StudentForm = (props) => {
   const [form, setForm] = useState({
-    name: "",
-    age: "",
-    address: "",
-    gender: "",
+    name: props.attributes ? props.attributes.name : "",
+    age: props.attributes ? props.attributes.age : "",
+    address: props.attributes ? props.attributes.address : "",
+    gender: props.attributes ? props.attributes.gender : "男",
   });
 
   const ctx = useContext(StudentContent);
@@ -37,8 +37,24 @@ const StudentForm = () => {
     }
   }, []);
 
+  const updateStu = useCallback(async (formData, id) => {
+    const res = await fetch(`http://localhost:1337/api/students/${id}`, {
+      method: "put",
+      body: JSON.stringify({ data: formData }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (res.status === 200) {
+      ctx.fetchList();
+    }
+  }, []);
+
   const submit = () => {
     addStu(form);
+  };
+
+  const handleUpdate = () => {
+    updateStu(form, props.id);
   };
 
   return (
@@ -63,7 +79,13 @@ const StudentForm = () => {
         />
       </td>
       <td>
-        <button onClick={submit}>添加</button>
+        {props.attributes && (
+          <div style={{ display: "flex" }}>
+            <button onClick={() => props.handleCancel()}>取消</button>
+            <button onClick={handleUpdate}>确定</button>
+          </div>
+        )}
+        {!props.attributes && <button onClick={submit}>添加</button>}
       </td>
     </tr>
   );
