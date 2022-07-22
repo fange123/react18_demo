@@ -1,32 +1,15 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import StudentList from "./components/StudentList";
 import StudentContent from "./components/store";
+import { useFetch } from "./components/hooks/useFetch";
 
 const App = () => {
-  const [list, setList] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const fetchList = useCallback(async () => {
-    //* 初始化 的时候发请求
-    //* fetch（）用来向服务器发请求，是ajax升级版
-    //* 两个参数：1，请求地址；2，请求信息(可省略)
-    try {
-      setLoading(true);
-      setError(null);
-      const res = await fetch("http://localhost:1337/api/students");
-      if (res.status === 200) {
-        const data = await res.json(); //* 该方法可以把响应来的json转换成js对象
-        setList(data.data);
-      } else {
-        throw new Error("数据加载异常");
-      }
-    } catch (e) {
-      setError(e);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const {
+    fetchList,
+    loading,
+    error,
+    data: list,
+  } = useFetch("http://localhost:1337/api/students");
 
   const refresh = () => {
     fetchList();
