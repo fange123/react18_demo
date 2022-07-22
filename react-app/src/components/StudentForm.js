@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useContext } from "react";
 import styles from "./index.module.css";
 import StudentContent from "./store";
+import { useFetch } from "../components/hooks/useFetch";
 
 const StudentForm = (props) => {
   const [form, setForm] = useState({
@@ -25,36 +26,26 @@ const StudentForm = (props) => {
     setForm((prev) => ({ ...prev, address: e.target.value }));
   };
 
-  const addStu = useCallback(async (formData) => {
-    const res = await fetch("http://localhost:1337/api/students", {
-      method: "POST",
-      body: JSON.stringify({ data: formData }),
-      headers: { "Content-Type": "application/json" },
-    });
+  const { fetchList: addStu } = useFetch("students", { method: "POST" }, () => {
+    ctx.fetchList();
+  });
 
-    if (res.status === 200) {
+  const { fetchList: updateStu } = useFetch(
+    `students/${props.id}`,
+    {
+      method: "PUT",
+    },
+    () => {
       ctx.fetchList();
     }
-  }, []);
-
-  const updateStu = useCallback(async (formData, id) => {
-    const res = await fetch(`http://localhost:1337/api/students/${id}`, {
-      method: "put",
-      body: JSON.stringify({ data: formData }),
-      headers: { "Content-Type": "application/json" },
-    });
-
-    if (res.status === 200) {
-      ctx.fetchList();
-    }
-  }, []);
+  );
 
   const submit = () => {
     addStu(form);
   };
 
   const handleUpdate = () => {
-    updateStu(form, props.id);
+    updateStu(form);
   };
 
   return (

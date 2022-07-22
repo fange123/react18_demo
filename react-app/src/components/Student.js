@@ -1,20 +1,22 @@
-import React, { useContext, useCallback, useState } from "react";
+import React, { useContext, useState } from "react";
 import StudentContent from "./store";
 import StudentForm from "./StudentForm";
+import { useFetch } from "../components/hooks/useFetch";
 
 const Student = (props) => {
   const { attributes, id } = props;
   const { name, address, gender, age } = attributes;
   const [isEdit, setIsEdit] = useState(false);
   const ctx = useContext(StudentContent);
-  const handleDelete = useCallback(async () => {
-    try {
-      await fetch(`http://localhost:1337/api/students/${id}`, {
-        method: "delete",
-      });
+  const { fetchList: handleDelete } = useFetch(
+    `students/${id}`,
+    {
+      method: "delete",
+    },
+    () => {
       ctx.fetchList();
-    } catch (e) {}
-  }, []);
+    }
+  );
 
   const handleEdit = () => {
     setIsEdit(true);

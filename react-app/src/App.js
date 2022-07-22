@@ -4,12 +4,7 @@ import StudentContent from "./components/store";
 import { useFetch } from "./components/hooks/useFetch";
 
 const App = () => {
-  const {
-    fetchList,
-    loading,
-    error,
-    data: list,
-  } = useFetch("http://localhost:1337/api/students");
+  const { fetchList, loading, error, data: list } = useFetch("students", {});
 
   const refresh = () => {
     fetchList();
