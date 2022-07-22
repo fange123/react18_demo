@@ -8,6 +8,7 @@ const Student = (props) => {
   const { name, address, gender, age } = attributes;
   const [isEdit, setIsEdit] = useState(false);
   const ctx = useContext(StudentContent);
+
   const { fetchList: handleDelete } = useFetch(
     `students/${id}`,
     {
@@ -35,7 +36,7 @@ const Student = (props) => {
           <td>{age}</td>
           <td>{address}</td>
           <td style={{ display: "flex" }}>
-            <button onClick={handleDelete}>删除</button>
+            <button onClick={() => handleDelete()}>删除</button>
             <button onClick={handleEdit}>编辑</button>
           </td>
         </tr>
