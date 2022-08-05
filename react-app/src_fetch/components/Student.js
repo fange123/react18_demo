@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import StudentContent from "./store";
 import StudentForm from "./StudentForm";
+import { useFetch } from "./hooks/useFetch";
 
 const Student = (props) => {
   const { attributes, id } = props;
   const { name, address, gender, age } = attributes;
   const [isEdit, setIsEdit] = useState(false);
+  const ctx = useContext(StudentContent);
+
+  const { fetchList: handleDelete } = useFetch(
+    `students/${id}`,
+    {
+      method: "delete",
+    },
+    () => {
+      ctx.fetchList();
+    }
+  );
 
   const handleEdit = () => {
     setIsEdit(true);
@@ -13,8 +26,6 @@ const Student = (props) => {
   const handleCancel = () => {
     setIsEdit(false);
   };
-
-  const handleDelete = () => {};
 
   return (
     <>

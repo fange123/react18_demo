@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useContext } from "react";
 import styles from "./index.module.css";
+import StudentContent from "./store";
+import { useFetch } from "./hooks/useFetch";
 
 const StudentForm = (props) => {
   const [form, setForm] = useState({
@@ -8,6 +10,8 @@ const StudentForm = (props) => {
     address: props.attributes ? props.attributes.address : "",
     gender: props.attributes ? props.attributes.gender : "男",
   });
+
+  const ctx = useContext(StudentContent);
 
   const handleNameChange = (e) => {
     setForm((prev) => ({ ...prev, name: e.target.value }));
@@ -22,9 +26,27 @@ const StudentForm = (props) => {
     setForm((prev) => ({ ...prev, address: e.target.value }));
   };
 
-  const submit = () => {};
+  const { fetchList: addStu } = useFetch("students", { method: "POST" }, () => {
+    ctx.fetchList();
+  });
 
-  const handleUpdate = () => {};
+  const { fetchList: updateStu } = useFetch(
+    `students/${props.id}`,
+    {
+      method: "PUT",
+    },
+    () => {
+      ctx.fetchList();
+    }
+  );
+
+  const submit = () => {
+    addStu(form);
+  };
+
+  const handleUpdate = () => {
+    updateStu(form);
+  };
 
   return (
     <tr className={styles.wrap}>
