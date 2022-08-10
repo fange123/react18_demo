@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./index.module.css";
+import { useGetStudentByIdQuery } from "./api/studentApi";
 
 const StudentForm = (props) => {
   const [form, setForm] = useState({
-    name: props.attributes ? props.attributes.name : "",
-    age: props.attributes ? props.attributes.age : "",
-    address: props.attributes ? props.attributes.address : "",
-    gender: props.attributes ? props.attributes.gender : "男",
+    name: "",
+    age: "",
+    address: "",
+    gender: "男",
   });
+
+  const { isSuccess, data: stuData } = useGetStudentByIdQuery(props.id);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setForm(stuData.attributes);
+    }
+  }, [isSuccess]);
 
   const handleNameChange = (e) => {
     setForm((prev) => ({ ...prev, name: e.target.value }));

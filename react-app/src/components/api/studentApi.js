@@ -20,6 +20,7 @@ export const studentApi = createApi({
   }),
   endpoints: (build) => {
     return {
+      //+ 获取所有学生信息
       getStudents: build.query({
         query() {
           return {
@@ -27,10 +28,24 @@ export const studentApi = createApi({
             url: "students",
           };
         },
+        //* transformResponse用来转换返回的数据格式
+        transformResponse(baseQueryReturnValue) {
+          return baseQueryReturnValue.data;
+        },
+      }),
+
+      getStudentById: build.query({
+        query(id) {
+          return {
+            url: `students/${id}`,
+          };
+        },
+        transformResponse(baseQueryReturnValue) {
+          return baseQueryReturnValue.data;
+        },
       }),
     };
   },
 });
 
-console.log("studentApi", studentApi);
-export const { useGetStudentsQuery } = studentApi;
+export const { useGetStudentsQuery, useGetStudentByIdQuery } = studentApi;

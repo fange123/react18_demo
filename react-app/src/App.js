@@ -10,7 +10,7 @@ const App = () => {
       <button style={{ width: "50px", height: "30px" }} onClick={refetch}>
         刷新
       </button>
-      {isSuccess && data && <StudentList list={data.data} />}
+      {isSuccess && <StudentList list={data} />}
       {isFetching && <p>数据正在加载中...</p>}
     </div>
   );
