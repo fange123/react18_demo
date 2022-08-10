@@ -43,6 +43,7 @@ export const studentApi = createApi({
         transformResponse(baseQueryReturnValue) {
           return baseQueryReturnValue.data;
         },
+        keepUnusedDataFor: 0, //* 不进行请求缓存，根据实际需要修改缓存的事件
       }),
     };
   },
