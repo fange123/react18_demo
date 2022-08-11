@@ -4,7 +4,6 @@ import axios from "axios";
 // 自定义一个axiosBaseQuery
 const axiosBaseQuery = ({ baseUrl }) => {
   return ({ url, method, data, params }) => {
-    console.log(data);
     // 调用axios代码查询数据
     return axios({
       url: baseUrl + url,
@@ -61,17 +60,18 @@ export const studentApi = createApi({
           return {
             method: "POST",
             url: "students",
-            data: stu,
+            data: { data: stu }, //TODO:一定要有data
           };
         },
       }),
 
-      updateStu: build.mutation({
+      updateStudent: build.mutation({
         query(stu) {
+          console.log("stu", stu);
           return {
             url: `students/${stu.id}`,
             method: "PUT",
-            data: stu.attributes,
+            data: { data: stu.attributes },
           };
         },
       }),

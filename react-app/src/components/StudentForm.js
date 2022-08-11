@@ -3,6 +3,7 @@ import styles from "./index.module.css";
 import {
   useGetStudentByIdQuery,
   useAddStudentMutation,
+  useUpdateStudentMutation,
 } from "./api/studentApi";
 
 const StudentForm = (props) => {
@@ -18,6 +19,8 @@ const StudentForm = (props) => {
   });
 
   const [addStudent, { isSuccess: isAddSuccess }] = useAddStudentMutation();
+  const [updateStudent, { isSuccess: isUpdateSuccess }] =
+    useUpdateStudentMutation();
 
   useEffect(() => {
     if (isSuccess) {
@@ -40,9 +43,18 @@ const StudentForm = (props) => {
 
   const submit = () => {
     addStudent(form);
+    setForm({
+      name: "",
+      age: "",
+      address: "",
+      gender: "男",
+    });
   };
 
-  const handleUpdate = () => {};
+  const handleUpdate = () => {
+    updateStudent({ id: props.id, attributes: form });
+    props.handleCancel();
+  };
 
   return (
     <tr className={styles.wrap}>
