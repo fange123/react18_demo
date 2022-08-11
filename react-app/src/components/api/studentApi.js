@@ -24,7 +24,6 @@ export const studentApi = createApi({
       getStudents: build.query({
         query() {
           return {
-            method: "GET",
             url: "students",
           };
         },
@@ -45,8 +44,21 @@ export const studentApi = createApi({
         },
         keepUnusedDataFor: 0, //* 不进行请求缓存，根据实际需要修改缓存的事件
       }),
+
+      deleteStudent: build.mutation({
+        query(id) {
+          return {
+            method: "DELETE",
+            url: `students/${id}`,
+          };
+        },
+      }),
     };
   },
 });
 
-export const { useGetStudentsQuery, useGetStudentByIdQuery } = studentApi;
+export const {
+  useGetStudentsQuery,
+  useGetStudentByIdQuery,
+  useDeleteStudentMutation,
+} = studentApi;

@@ -10,7 +10,9 @@ const StudentForm = (props) => {
     gender: "男",
   });
 
-  const { isSuccess, data: stuData } = useGetStudentByIdQuery(props.id);
+  const { isSuccess, data: stuData } = useGetStudentByIdQuery(props.id, {
+    skip: !props.id, //* 是否跳过此次请求
+  });
 
   useEffect(() => {
     if (isSuccess) {
