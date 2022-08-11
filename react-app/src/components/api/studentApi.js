@@ -3,12 +3,14 @@ import axios from "axios";
 
 // 自定义一个axiosBaseQuery
 const axiosBaseQuery = ({ baseUrl }) => {
-  return ({ url, method, data }) => {
+  return ({ url, method, data, params }) => {
+    console.log(data);
     // 调用axios代码查询数据
     return axios({
       url: baseUrl + url,
       method,
       data,
+      params,
     });
   };
 };
@@ -53,6 +55,26 @@ export const studentApi = createApi({
           };
         },
       }),
+
+      addStudent: build.mutation({
+        query(stu) {
+          return {
+            method: "POST",
+            url: "students",
+            data: stu,
+          };
+        },
+      }),
+
+      updateStu: build.mutation({
+        query(stu) {
+          return {
+            url: `students/${stu.id}`,
+            method: "PUT",
+            data: stu.attributes,
+          };
+        },
+      }),
     };
   },
 });
@@ -61,4 +83,6 @@ export const {
   useGetStudentsQuery,
   useGetStudentByIdQuery,
   useDeleteStudentMutation,
+  useAddStudentMutation,
+  useUpdateStudentMutation,
 } = studentApi;

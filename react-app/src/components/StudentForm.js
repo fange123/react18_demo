@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./index.module.css";
-import { useGetStudentByIdQuery } from "./api/studentApi";
+import {
+  useGetStudentByIdQuery,
+  useAddStudentMutation,
+} from "./api/studentApi";
 
 const StudentForm = (props) => {
   const [form, setForm] = useState({
@@ -13,6 +16,8 @@ const StudentForm = (props) => {
   const { isSuccess, data: stuData } = useGetStudentByIdQuery(props.id, {
     skip: !props.id, //* 是否跳过此次请求
   });
+
+  const [addStudent, { isSuccess: isAddSuccess }] = useAddStudentMutation();
 
   useEffect(() => {
     if (isSuccess) {
@@ -33,7 +38,9 @@ const StudentForm = (props) => {
     setForm((prev) => ({ ...prev, address: e.target.value }));
   };
 
-  const submit = () => {};
+  const submit = () => {
+    addStudent(form);
+  };
 
   const handleUpdate = () => {};
 
