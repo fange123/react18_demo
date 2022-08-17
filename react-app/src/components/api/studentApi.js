@@ -19,6 +19,8 @@ export const studentApi = createApi({
   baseQuery: axiosBaseQuery({
     baseUrl: "http://localhost:1337/api/",
   }),
+  //* 声明表情类型
+  tagTypes: ["student"],
   endpoints: (build) => {
     return {
       //+ 获取所有学生信息
@@ -32,6 +34,14 @@ export const studentApi = createApi({
         transformResponse(baseQueryReturnValue) {
           return baseQueryReturnValue.data;
         },
+
+        //* 查询功能提供的标签
+        providesTags: [
+          {
+            type: "student",
+            id: "LIST",
+          },
+        ],
       }),
 
       getStudentById: build.query({
@@ -43,7 +53,14 @@ export const studentApi = createApi({
         transformResponse(baseQueryReturnValue) {
           return baseQueryReturnValue.data;
         },
-        keepUnusedDataFor: 0, //* 不进行请求缓存，根据实际需要修改缓存的事件
+        keepUnusedDataFor: 60, //* 不进行请求缓存，根据实际需要修改缓存的事件
+        //* 还可以精准的打标签
+        providesTags: (result, err, id) => [
+          {
+            type: "student",
+            id,
+          },
+        ],
       }),
 
       deleteStudent: build.mutation({
@@ -53,6 +70,12 @@ export const studentApi = createApi({
             url: `students/${id}`,
           };
         },
+        invalidatesTags: [
+          {
+            type: "student",
+            id: "LIST",
+          },
+        ],
       }),
 
       addStudent: build.mutation({
@@ -63,17 +86,29 @@ export const studentApi = createApi({
             data: { data: stu }, //TODO:一定要有data
           };
         },
+        //* 使使用了该标签的查询失效，从而触发再次查询
+        invalidatesTags: [
+          {
+            type: "student",
+            id: "LIST",
+          },
+        ],
       }),
 
       updateStudent: build.mutation({
         query(stu) {
-          console.log("stu", stu);
           return {
             url: `students/${stu.id}`,
             method: "PUT",
             data: { data: stu.attributes },
           };
         },
+        invalidatesTags: (stu) => [
+          {
+            type: "student",
+            id: stu.id,
+          },
+        ],
       }),
     };
   },
