@@ -31,10 +31,19 @@ export const AuthApi = createApi({
           }
         }
       }),
+      login:build.mutation({
+        query(user){
+          return {
+              url:'auth/local',
+              method: 'POST',
+              data:user
+          }
+        }
+      }),
 
     }
   }
 
 })
 
-export const { useRegisterMutation } = AuthApi
+export const { useRegisterMutation ,useLoginMutation} = AuthApi
