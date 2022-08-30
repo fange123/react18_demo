@@ -1,7 +1,10 @@
 import React,{useRef,useState} from 'react';
+import { useRegisterMutation }  from '../store/api/AuthApi'
 
 const AuthForm = () => {
   const [isLogin,setIsLogin] = useState(false)
+  //* 引入注册的钩子函数
+    const [register,{error:regError}] = useRegisterMutation()
 
   const userNameRef = useRef(null)
   const pwdRef = useRef(null)
@@ -16,13 +19,21 @@ const AuthForm = () => {
       console.log('登录', username, password)
     }else {
     const email = emailRef.current.value
-  console.log('注册 ',username, password,email )
+      register({username, email,password}).then(res=> {
+        if(!res.error){
+        //注册成功
+        setIsLogin(true)
+        }
+      })
     }
 
 
   }
   return (
     <div>
+      <p style={{color: 'red'}}>
+        {regError && '用户名或者邮件重复'}
+      </p>
       <h2>{isLogin ? '登录' :'注册'}</h2>
       <form onSubmit={handelSubmit}>
         <div>
@@ -43,8 +54,8 @@ const AuthForm = () => {
             setIsLogin(!isLogin)
         }}>
           {
-
-            isLogin ? '没有账号？点击注册' :'已有账号，点击登录'}
+            isLogin ? '没有账号？点击注册' :'已有账号，点击登录'
+            }
         </a>
        </div>
       </form>
