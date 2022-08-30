@@ -1,18 +1,20 @@
 import React from "react";
-import StudentList from "./components/StudentList";
-import { useGetStudentsQuery } from "./components/api/studentApi";
+import { Routes, Route } from 'react-router-dom'
+import HomePage from "./pages/HomePage";
+import ProfilePage from "./pages/ProfilePage";
+import Layout from "./components/Layout";
+import AuthPage from "./pages/AuthPage";
 
 const App = () => {
-  const { data, isFetching, isSuccess, refetch } = useGetStudentsQuery();
 
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <button style={{ width: "50px", height: "30px" }} onClick={refetch}>
-        刷新
-      </button>
-      {isSuccess && <StudentList list={data} />}
-      {isFetching && <p>数据正在加载中...</p>}
-    </div>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage/>}/>
+          <Route path="/profile" element={<ProfilePage/>}/>
+          <Route path="/auth-form" element={<AuthPage/>}/>
+        </Routes>
+      </Layout>
   );
 };
 
