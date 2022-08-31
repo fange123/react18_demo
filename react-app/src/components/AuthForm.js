@@ -1,13 +1,18 @@
-import React,{useRef,useState} from 'react';
+import React,{useRef,useState } from 'react';
 import { useRegisterMutation ,useLoginMutation}  from '../store/api/AuthApi'
 import { useNavigate} from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { login,logout } from '../store/reducer/authSlice'
 
 const AuthForm = () => {
-  const nav = useNavigate()
+
   const [isLogin,setIsLogin] = useState(false)
   //* 引入注册的钩子函数
-    const [register,{error:regError}] = useRegisterMutation()
-    const [login,{error:loginError}] = useLoginMutation()
+    const [registerFn,{error:regError}] = useRegisterMutation()
+    const [loginFn,{error:loginError}] = useLoginMutation()
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
   const userNameRef = useRef(null)
   const pwdRef = useRef(null)
@@ -19,15 +24,20 @@ const AuthForm = () => {
     const password = pwdRef.current.value
     //处理登录功能
     if(isLogin){
-      login({identifier:username,password}).then(res=> {
+      loginFn({identifier:username,password}).then(res=> {
         if(!res.error){
         //登录成功
-        nav('/profile')
+        dispatch(login({
+          user:res.data.user,
+          token:res.data.jwt,
+        }))
+
+        navigate('/',{replace:true})
         }
       })
     }else {
     const email = emailRef.current.value
-      register({username, email,password}).then(res=> {
+      registerFn({username, email,password}).then(res=> {
         if(!res.error){
         //注册成功
         setIsLogin(true)
