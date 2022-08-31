@@ -1,6 +1,6 @@
 import React,{useRef,useState } from 'react';
 import { useRegisterMutation ,useLoginMutation}  from '../store/api/AuthApi'
-import { useNavigate} from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { login,logout } from '../store/reducer/authSlice'
 
@@ -13,10 +13,14 @@ const AuthForm = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const location = useLocation()
 
   const userNameRef = useRef(null)
   const pwdRef = useRef(null)
   const emailRef = useRef(null)
+
+  //* 根据之前的url判断当前的url
+  const from = location?.state?.prevLocation?.pathname || '/'
 
   const handelSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +36,7 @@ const AuthForm = () => {
           token:res.data.jwt,
         }))
 
-        navigate('/',{replace:true})
+        navigate(from,{replace:true})
         }
       })
     }else {
