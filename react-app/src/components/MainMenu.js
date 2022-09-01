@@ -16,7 +16,9 @@ const dispatch = useDispatch()
         {
           auth?.isLogged && <>
             <li><Link to='/' onClick={() => dispatch(logout())}>登出</Link></li>
-            <li><Link to='profile'>{auth?.user?.username}的个人信息</Link></li> </>
+            <li><Link to='profile'>{auth?.user?.username}的个人信息</Link></li>
+            <li><Link to='student'>学生信息</Link></li>
+             </>
         }
         {
           !auth?.isLogged && <li><Link to='auth-form'>登录/注册</Link></li>

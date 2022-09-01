@@ -15,7 +15,7 @@ const axiosBaseQuery = ({ baseUrl }) => {
   };
 };
 
-export const AuthApi = createApi({
+export const authApi = createApi({
   reducerPath:'authApi',
   baseQuery:axiosBaseQuery({
     baseUrl:'http://localhost:1337/api/'
@@ -46,4 +46,4 @@ export const AuthApi = createApi({
 
 })
 
-export const { useRegisterMutation ,useLoginMutation} = AuthApi
+export const { useRegisterMutation ,useLoginMutation} = authApi
