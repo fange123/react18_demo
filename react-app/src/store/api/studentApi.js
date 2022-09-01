@@ -1,23 +1,13 @@
 import { createApi } from "@reduxjs/toolkit/dist/query/react";
-import axios from "axios";
-
-// 自定义一个axiosBaseQuery
-const axiosBaseQuery = ({ baseUrl }) => {
-  return ({ url, method, data, params }) => {
-    // 调用axios代码查询数据
-    return axios({
-      url: baseUrl + url,
-      method,
-      data,
-      params,
-    });
-  };
-};
+import request from '../../utils/request'
 
 export const studentApi = createApi({
   reducerPath: "studentApi",
-  baseQuery: axiosBaseQuery({
+  baseQuery: request({
     baseUrl: "http://localhost:1337/api/",
+    headers:{
+    'Authorization':`Bearer ${localStorage.getItem('token')}`
+  }
   }),
   //* 声明表情类型
   tagTypes: ["student"],
