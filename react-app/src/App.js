@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
+import Demo from "./Demo";
 
 const App = () => {
   return (
     <div>
-      app
+      <Demo />
     </div>
   );
 };

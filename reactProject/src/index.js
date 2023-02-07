@@ -7,14 +7,20 @@ import DropBack from "./portal/index";
 //# 或者将react-scripts start设置到package.json的scripts选项中，然后通过npm start启动（初次启动需要输入y确认）”scripts”: { “start”: “react-scripts start” }
 import ReactDOM from "react-dom/client"; //react18开始把react dom拆分成client和service
 import "./index.css";
+import DangerouslySeiInnerHtml from "./demo/dangerouslySetInnerHtml/DangerouslySeiInnerHtml";
+import EffectAsync from "./demo/useEffect-async-await";
+import Demo from "./demo/FormList";
 
 const App = () => {
   return (
-    <div className='content'>
-      <div className='first'>啊啊啊</div>
-      <div className='second'>哈哈哈哈</div>
-      <DropBack />
-    </div>
+    <Demo/>
+
+    // <DangerouslySeiInnerHtml/>
+    // <div className='content'>
+    //   <div className='first'>啊啊啊</div>
+    //   <div className='second'>哈哈哈哈</div>
+    //   <DropBack />
+    // </div>
   );
 };
 
